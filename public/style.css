@@ -1,0 +1,62 @@
+:root {
+  --primary-color: #097C87;
+  --secondary-color: green;
+  --text-color: white;
+  --another-color: pink;
+}
+
+body {
+  background-color: var(--primary-color);
+
+}
+
+.nav-bar {
+  top: 0px;
+  height: 50px;
+  background-color: var(--secondary-color);
+  position: sticky;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.nav-bar a {
+  color: var(--text-color);
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.nav-bar a:hover {
+  color: var(--another-color);
+}
+
+.gallary {
+  display: flex;
+}
+
+.gallary div {
+  width: 200px;
+  height: 200px;
+  background-color: var(--secondary-color);
+  margin: 10px;
+  padding: 10px;
+}
+
+.gallary div:hover {
+  cursor: pointer;
+  width: 220px;
+  height: 220px;
+}
+
+.gallary div img {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+h1 {
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+}

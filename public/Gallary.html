@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+
+    <div class="nav-bar">
+        <a href="http://127.0.0.1:5500/public/index.html">Homepage</a>
+        <a href="http://127.0.0.1:5500/public/Gallary.html">Gallary</a>
+        <a href="http://127.0.0.1:5500/public/projects.html">Projects</a>
+        <a href="http://127.0.0.1:5500/public/contact.html">Contact Me!</a>
+        <a href="http://127.0.0.1:5500/public/That last page that I haven't thoguht of.html">That last page that I haven't thoguth of</a>
+    </div>
+</head>
+<body>
+    <h1>Gallary</h1>
+    <h3>A Gallary of Things I Like</h3>
+    <div class="gallary">
+
+        <!-- rminder mr sieg suggest to use url params to a detail page and a dictionary json thing-->
+        <a href="http://127.0.0.1:5500/public/detail.html?img=Lemon">
+            <div>
+                <img src="images/lemon.jfif" alt="Lemon">
+            </div>
+        </a>
+        <a href="http://127.0.0.1:5500/public/detail.html?img=TooSweet">
+            <div>
+                <img src="images/toosweet.jpg" alt="Too Sweet Song Cover">
+            </div>
+        </a>
+        <a href="http://127.0.0.1:5500/public/detail.html?img=RedLikeRoses">
+            <div>
+                <img src="images/redlikeroses.jfif" alt="Red Like Roses Song">
+            </div>
+        </a>
+    </div>
+</body>
+<script>
+    const images = [["images/lemon.jfif", "Lemon"]]
+</script>
+</html>
