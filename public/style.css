@@ -30,11 +30,11 @@ body {
   color: var(--another-color);
 }
 
-.gallary {
+#gallary {
   display: flex;
 }
 
-.gallary div {
+#gallary div {
   width: 200px;
   height: 200px;
   background-color: var(--secondary-color);
@@ -42,13 +42,13 @@ body {
   padding: 10px;
 }
 
-.gallary div:hover {
+#gallary div:hover {
   cursor: pointer;
   width: 220px;
   height: 220px;
 }
 
-.gallary div img {
+#gallary div img {
   max-width: 200px;
   max-height: 200px;
 }

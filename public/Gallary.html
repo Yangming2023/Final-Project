@@ -17,27 +17,30 @@
 <body>
     <h1>Gallary</h1>
     <h3>A Gallary of Things I Like</h3>
-    <div class="gallary">
+    <div id="gallary">
 
         <!-- rminder mr sieg suggest to use url params to a detail page and a dictionary json thing-->
-        <a href="http://127.0.0.1:5500/public/detail.html?img=Lemon">
-            <div>
-                <img src="images/lemon.jfif" alt="Lemon">
-            </div>
-        </a>
-        <a href="http://127.0.0.1:5500/public/detail.html?img=TooSweet">
-            <div>
-                <img src="images/toosweet.jpg" alt="Too Sweet Song Cover">
-            </div>
-        </a>
-        <a href="http://127.0.0.1:5500/public/detail.html?img=RedLikeRoses">
-            <div>
-                <img src="images/redlikeroses.jfif" alt="Red Like Roses Song">
-            </div>
-        </a>
     </div>
 </body>
 <script>
-    const images = [["images/lemon.jfif", "Lemon"]]
+    const images = [["images/lemon.jfif", "Lemon"], ["images/toosweet.jpg", "TooSweet"], ["images/redlikeroses.jfif", "RedLikeRoses"], ["images/salmon.jfif", "Salmon"]];
+    const catagories = {"Songs": [0, 1, 2], "Food": [3]};
+    let all = [];
+    for (let i=0; i<images.length; i++) {
+        all.push(i);
+    }
+    catagories["All"] = all;
+    
+    const gallary = document.getElementById("gallary");
+    for (const x in catagories["All"]) {
+        const newPic = document.createElement("a");
+        newPic.href = "http://127.0.0.1:5500/public/detail.html?img=" + images[x][1];
+        const newDiv = document.createElement("div");
+        const newImg = document.createElement("img");
+        newImg.src = images[x][0];
+        newDiv.appendChild(newImg);
+        newPic.appendChild(newDiv);
+        gallary.appendChild(newPic);
+    }
 </script>
 </html>
