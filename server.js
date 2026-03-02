@@ -1,10 +1,25 @@
-const express = require("express");
-const cors = require("cors");
 
+const express = require('express');
+const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(cors());
-app.use(express.json());
-app.use(express.static("public"));
+app.use(express.json()); 
+app.use(express.static('public')); // This serves your HTML automatically!
+let dataStore = [{ name: "Teacher", message: "API is live!" }];
 
+// GET: Send data from the datastore to the user
+app.get('/api/messages', (req, res) => {
+    res.json(dataStore);
+});
+
+// POST: Take data sent and store it in the datastore
+app.post('/api/messages', (req, res) => {
+    dataStore.push(req.body);
+    res.status(201).send({ message: "Received!" });
+});
+
+app.listen(PORT, () => console.log(`Server: http://localhost:${PORT}`));
+
+// Reminder: node server.js in terminal to start it running

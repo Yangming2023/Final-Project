@@ -7,11 +7,11 @@
     <title>Document</title>
 
     <div class="nav-bar">
-        <a href="http://127.0.0.1:5500/public/index.html">Homepage</a>
-        <a href="http://127.0.0.1:5500/public/Gallary.html">Gallary</a>
-        <a href="http://127.0.0.1:5500/public/projects.html">Projects</a>
-        <a href="http://127.0.0.1:5500/public/contact.html">Contact Me!</a>
-        <a href="http://127.0.0.1:5500/public/That last page that I haven't thoguht of.html">That last page that I haven't thoguth of</a>
+        <a href="http://localhost:3000/index.html">Homepage</a>
+        <a href="http://localhost:3000/Gallary.html">Gallary</a>
+        <a href="http://localhost:3000/projects.html">Projects</a>
+        <a href="http://localhost:3000/contact.html">Contact Me!</a>
+        <a href="http://localhost:3000/That last page that I haven't thoguht of.html">That last page that I haven't thoguth of</a>
     </div>
 </head>
 <body>
@@ -21,7 +21,7 @@
     <select id="filter">
         <option value="All">All</option>
     </select>
-    <div id="gallary">
+    <div id="gallary" class="gallaryImage">
 
         <!-- rminder mr sieg suggest to use url params to a detail page and a dictionary json thing-->
     </div>
@@ -47,7 +47,6 @@
         gallary.innerHTML = "";
         for (const x of catagories[filter.value]) {
             const newPic = document.createElement("a");
-            newPic.className = "gallaryImage";
             newPic.href = "http://127.0.0.1:5500/public/Details.html?img=" + images[x][1];
             const newDiv = document.createElement("div");
             const newImg = document.createElement("img");

@@ -4,18 +4,94 @@
     <meta charset="UTF-8">
     <title>Projects</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        #leaveMessage:hover {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
 
     <div class="nav-bar">
-        <a href="http://127.0.0.1:5500/public/index.html">Homepage</a>
-        <a href="http://127.0.0.1:5500/public/Gallary.html">Gallary</a>
-        <a href="http://127.0.0.1:5500/public/projects.html">Projects</a>
-        <a href="http://127.0.0.1:5500/public/contact.html">Contact Me!</a>
-        <a href="http://127.0.0.1:5500/public/That last page that I haven't thoguht of.html">That last page that I haven't thoguth of</a>
+        <a href="http://localhost:3000/index.html">Homepage</a>
+        <a href="http://localhost:3000/Gallary.html">Gallary</a>
+        <a href="http://localhost:3000/projects.html">Projects</a>
+        <a href="http://localhost:3000/contact.html">Contact Me!</a>
+        <a href="http://localhost:3000/That last page that I haven't thoguht of.html">That last page that I haven't thoguth of</a>
     </div>
 </head>
 <body>
+    <!-- three contact things: phone num, email, and leave message on website and we can use the api things for the messages-->
+    <div class="gallaryImage" id="contactBox">
+        <a href="mailto:lcheng@eastsideprep.org">
+            <div>
+                <p>lcheng@eastsideprep.org</p>
+            </div>
+        </a>
+        <div id="leaveMessage">
+            <p>Leave a message on this website</p>
+            <label>Name:</label>
+            <input type="text" id="name" required>
+            <label>Message:</label>
+            <input type="text" id="message" required>
+        </div>
+        <a href="tel:+1-555-555-5555">
+            <div>
+                <p>something</p>
+            </div>
+        </a>
+    </div>
 
-    
-
+    <h1>Message Board</h1>
+    <p><a href="form.html">Add New Message</a></p>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Message</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="dataTable">
+            </tbody>
+    </table>
 </body>
+<script>
+    // 1. The function to get data from the server
+    async function loadMessages() {
+        // Ask the backend for the data
+        const response = await fetch('/api/messages');
+        // Convert the response to usable JSON
+        const data = await response.json();
+        // Grab the table body element
+        const tableBody = document.getElementById('dataTable');
+        // Reset the table content
+        tableBody.innerHTML = '';
+        // Loop through the data and create table rows as a string
+        // We use the 'index' to know which item to delete later
+        data.forEach((item, index) => {
+            const rowHtml = `
+                <tr>
+                    <td>${item.name}</td>
+                    <td>${item.message}</td>
+                    <td>
+                        <button onclick="deleteMessage(${index})">Delete</button>
+                    </td>
+                </tr>
+            `;
+            // Add this string to the table body contents
+            tableBody.innerHTML += rowHtml;
+        });
+    }
+    // 2. The function to delete an item
+    async function deleteMessage(index) {
+        // Send a DELETE request to the specific URL (e.g., /api/messages/2)
+        await fetch(`/api/messages/${index}`, {
+            method: 'DELETE'
+        });
+        // Re-load the table to show the item is gone
+        loadMessages();
+    }
+    // 3. Run the load function when the page first opens
+    loadMessages();
+</script>
 </html>
