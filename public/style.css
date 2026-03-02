@@ -32,6 +32,7 @@ body {
 
 #gallary {
   display: flex;
+  flex-wrap: wrap;
 }
 
 #gallary div {

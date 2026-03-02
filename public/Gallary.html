@@ -17,30 +17,47 @@
 <body>
     <h1>Gallary</h1>
     <h3>A Gallary of Things I Like</h3>
+    <label for="filter">Select what to show</label>
+    <select id="filter">
+        <option value="All">All</option>
+    </select>
     <div id="gallary">
 
         <!-- rminder mr sieg suggest to use url params to a detail page and a dictionary json thing-->
     </div>
 </body>
 <script>
-    const images = [["images/lemon.jfif", "Lemon"], ["images/toosweet.jpg", "TooSweet"], ["images/redlikeroses.jfif", "RedLikeRoses"], ["images/salmon.jfif", "Salmon"]];
-    const catagories = {"Songs": [0, 1, 2], "Food": [3]};
+    const images = [["images/lemon.jfif", "Lemon"], ["images/toosweet.jpg", "TooSweet"], ["images/redlikeroses.jfif", "RedLikeRoses"], ["images/salmon.jfif", "Salmon"], ["images/badminton.jfif", "Badminton"]];
+    const catagories = {"Songs": [0, 1, 2], "Food": [3], "Hobbies": [4]};
     let all = [];
     for (let i=0; i<images.length; i++) {
         all.push(i);
     }
+    const filter = document.getElementById("filter");
+    for (const x in catagories) {
+        const newFilter = document.createElement("option");
+        newFilter.value = x;
+        newFilter.textContent = x;
+        filter.appendChild(newFilter);
+    }
     catagories["All"] = all;
     
-    const gallary = document.getElementById("gallary");
-    for (const x in catagories["All"]) {
-        const newPic = document.createElement("a");
-        newPic.href = "http://127.0.0.1:5500/public/detail.html?img=" + images[x][1];
-        const newDiv = document.createElement("div");
-        const newImg = document.createElement("img");
-        newImg.src = images[x][0];
-        newDiv.appendChild(newImg);
-        newPic.appendChild(newDiv);
-        gallary.appendChild(newPic);
+    function addPictures() {
+        const gallary = document.getElementById("gallary");
+        gallary.innerHTML = "";
+        for (const x of catagories[filter.value]) {
+            const newPic = document.createElement("a");
+            newPic.href = "http://127.0.0.1:5500/public/detail.html?img=" + images[x][1];
+            const newDiv = document.createElement("div");
+            const newImg = document.createElement("img");
+            newImg.src = images[x][0];
+            newDiv.appendChild(newImg);
+            newPic.appendChild(newDiv);
+            gallary.appendChild(newPic);
+        }
     }
+
+    addPictures();
+    filter.addEventListener("change", () => addPictures());
 </script>
 </html>
