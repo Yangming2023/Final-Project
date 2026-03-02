@@ -47,7 +47,7 @@
         gallary.innerHTML = "";
         for (const x of catagories[filter.value]) {
             const newPic = document.createElement("a");
-            newPic.href = "http://127.0.0.1:5500/public/detail.html?img=" + images[x][1];
+            newPic.href = "http://127.0.0.1:5500/public/Details.html?img=" + images[x][1];
             const newDiv = document.createElement("div");
             const newImg = document.createElement("img");
             newImg.src = images[x][0];
