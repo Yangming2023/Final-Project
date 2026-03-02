@@ -6,23 +6,36 @@
     <link rel="stylesheet" href="style.css">
     <title>More about</title>
     <a href="http://127.0.0.1:5500/public/Gallary.html">←back to gallary</a>
+    <style>
+        #show {
+            text-align: center;
+        }
+        #whereFind {
+            display: block;
+        }
+    </style>
 </head>
 <body>
-    <h1 id="title"></h1>
-    <img id="displayImage">
-    <p id="description"></p>
+    <div id="show">
+        <h1 id="title"></h1>
+        <img id="displayImage">
+        <a id="whereFind">Link</a>
+        <p id="description"></p>
+    </div>
 </body>
 <script>
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const thing = urlParams.get("img");
 
-    const descriptions = {"Lemon": ["images/lemon.jfif", "bob", "hah"]};
+    const descriptions = {"Lemon": ["images/lemon.jfif", "bob", "hah", "https://www.youtube.com/watch?v=3NNhrqHZqlI"]};
 
     const header = document.getElementById("title");
     header.textContent = descriptions[thing][1];
     const display = document.getElementById("displayImage");
     display.src = descriptions[thing][0];
+    const link = document.getElementById("whereFind");
+    link.href = descriptions[thing][3];
     const description = document.getElementById("description");
     description.textContent = descriptions[thing][2];
 </script>
