@@ -25,12 +25,13 @@
         <label for="linkColor">Select the website's link color:</label>
         <input type="color" id="linkColor" value="#FFC0CB">
         <button type="submit" id="changeSettings">Change the settings</button>
+        <button type="button" onclick="restoreColors()">Restore to default colors</button>
     </div>
 
+    <script src="script.js"></script>
 </body>
 <script>
     const changeSettings = document.getElementById("changeSettings");
-    const root = document.documentElement;
     const defaultColors = ["#097C87", "#008000", "#FFFFFF", "#FFC0CB"];
     changeSettings.addEventListener("click", () => {
         const primaryColor = document.getElementById("primaryColor");
@@ -39,9 +40,24 @@
         const linkColor = document.getElementById("linkColor");
 
         root.style.setProperty('--primary-color', primaryColor.value);
+        document.cookie = `primaryColor=${primaryColor.value}; path=/;`;
         root.style.setProperty('--secondary-color', secondaryColor.value);
+        document.cookie = `secondaryColor=${secondaryColor.value}; path=/;`;
         root.style.setProperty('--text-color', textColor.value);
+        document.cookie = `textColor=${textColor.value}; path=/;`;
         root.style.setProperty('--another-color', linkColor.value);
+        document.cookie = `linkColor=${linkColor.value}; path=/;`;
     });
+
+    function restoreColors() {
+        root.style.setProperty('--primary-color', defaultColors[0]);
+        document.cookie = `primaryColor=${defaultColors[0]}; path=/;`;
+        root.style.setProperty('--secondary-color', defaultColors[1]);
+        document.cookie = `secondaryColor=${defaultColors[1]}; path=/;`;
+        root.style.setProperty('--text-color', defaultColors[2]);
+        document.cookie = `textColor=${defaultColors[2]}; path=/;`;
+        root.style.setProperty('--another-color', defaultColors[3]);
+        document.cookie = `linkColor=${defaultColors[3]}; path=/;`;
+    }
 </script>
 </html>
