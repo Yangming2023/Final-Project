@@ -51,6 +51,7 @@
             const newDiv = document.createElement("div");
             const newImg = document.createElement("img");
             newImg.src = images[x][0];
+            newImg.alt = images[x][1];
             newDiv.appendChild(newImg);
             newPic.appendChild(newDiv);
             gallary.appendChild(newPic);

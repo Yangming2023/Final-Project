@@ -42,6 +42,7 @@
     header.textContent = descriptions[thing][1];
     const display = document.getElementById("displayImage");
     display.src = descriptions[thing][0];
+    display.alt = descriptions[thing][1];
     const link = document.getElementById("whereFind");
     link.href = descriptions[thing][3];
     const description = document.getElementById("description");
