@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json()); 
 app.use(express.static('public')); // This serves your HTML automatically!
-let dataStore = [{ name: "Teacher", message: "API is live!" }];
+let dataStore = [{ name: "Louis", message: "Messages will show up here like this" }];
 
 // GET: Send data from the datastore to the user
 app.get('/api/messages', (req, res) => {
