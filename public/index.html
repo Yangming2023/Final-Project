@@ -14,8 +14,41 @@
     </div>
 </head>
 <body>
-
+    <section id="quote">
+        <p id="quoteContents">"hahaa"</p>
+        <span id="quoteMetadata">— Louis (2026)</span>
+    </section>
     
-
+    <div>
+        <a href="http://localhost:3000/Gallary.html">
+            <section class="aboutPage">
+                <h3>Gallary</h3>
+                <p style="text-align: center;">This page contains a gallary showcasing things I really like, from songs and sports to books and food. </p>
+            </section>
+        </a>
+    </div>
 </body>
+<script>
+    const quotes = [["hahaa", "Louis", "2026"], ["I AM DOOM", "DR. DOOM", "DOOMSDAY"]];
+    let cur = 0;
+
+    const quote = document.getElementById("quote");
+    quote.addEventListener('click', () => {
+        const content = document.getElementById("quoteContents");
+        const metadata = document.getElementById("quoteMetadata");
+        content.style.opacity = 0;
+        metadata.style.opacity = 0;
+
+        setTimeout(() => {
+            cur = (cur + 1) % quotes.length;
+
+            content.textContent = `"${quotes[cur][0]}"`;
+            metadata.textContent = `—${quotes[cur][1]} (${quotes[cur][2]})`;
+
+            content.style.opacity = 1;
+            metadata.style.opacity = 1;
+
+        }, 400);
+    });
+</script>
 </html>
