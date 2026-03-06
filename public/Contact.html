@@ -30,9 +30,10 @@
         <div id="leaveMessage">
             <p>Leave a message on this website</p>
             <label>Name:</label>
-            <input type="text" id="name" required>
+            <input type="text" id="userName" required>
             <label>Message:</label>
             <input type="text" id="message" required>
+            <button type="submit" id="submitButton">Send message</button>
         </div>
         <a href="tel:+1-555-555-5555">
             <div>
@@ -42,7 +43,7 @@
     </div>
 
     <h1>Message Board</h1>
-    <p><a href="form.html">Add New Message</a></p>
+    <p>See what other people have sent</p>
     <table border="1" cellpadding="10">
         <thead>
             <tr>
@@ -56,6 +57,25 @@
     </table>
 </body>
 <script>
+    document.getElementById('submitButton').addEventListener('click', async (event) => {
+        // alert("jajja");
+        event.preventDefault();
+        const dataToSend = {
+            name: document.getElementById('userName').value,
+            message: document.getElementById('message').value
+        }
+
+        const response = await fetch('/api/messages', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dataToSend)
+        });
+
+        loadMessages();
+    });
+
     // 1. The function to get data from the server
     async function loadMessages() {
         // Ask the backend for the data

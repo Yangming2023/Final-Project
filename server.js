@@ -20,6 +20,12 @@ app.post('/api/messages', (req, res) => {
     res.status(201).send({ message: "Received!" });
 });
 
+app.delete('/api/messages/:id', (req, res) => {
+    // console.log("bob");
+    dataStore.splice(req.params.id, 1);
+    res.sendStatus(200);
+});
+
 app.listen(PORT, () => console.log(`Server: http://localhost:${PORT}`));
 
 // Reminder: node server.js in terminal to start it running
