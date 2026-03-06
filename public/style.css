@@ -88,5 +88,47 @@ h3 {
 }
 
 #quoteContents, #quoteMetadata {
-    transition: opacity 0.4s ease;
+  transition: opacity 0.4s ease;
+}
+
+.aboutPage {
+  background-color: var(--secondary-color);
+  padding: 20px;
+}
+
+.aboutPage:hover {
+  cursor: pointer;
+}
+
+.aboutPage h3 {
+  text-align: right;
+}
+
+.aboutPage p {
+  text-align: right;
+}
+
+#aboutPages a {
+  text-decoration: none;
+}
+
+.aboutPage2 {
+  background-color: black;
+  padding: 20px;
+}
+
+.aboutPage2:hover {
+  cursor: pointer;
+}
+
+.aboutPage2 h3 {
+  text-align: left;
+}
+
+.aboutPage2 p {
+  text-align: left;
+}
+
+#aboutPages2 a {
+  text-decoration: none;
 }
