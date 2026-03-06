@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Projects</title>
+    <link rel="stylesheet" href="style.css">
+
+    <div class="nav-bar">
+        <a href="http://localhost:3000/index.html">Homepage</a>
+        <a href="http://localhost:3000/Gallary.html">Gallary</a>
+        <a href="http://localhost:3000/projects.html">Projects</a>
+        <a href="http://localhost:3000/contact.html">Contact Me!</a>
+        <a href="http://localhost:3000/settings.html">Settings</a>
+    </div>
+</head>
+<body>
+
+    <div>
+        <label for="primaryColr">Select the website's primary color:</label>
+        <input type="color" id="primaryColor" value="#097C87">
+        <label for="secondaryColr">Select the website's secondary color:</label>
+        <input type="color" id="secondaryColor" value="#008000">
+        <label for="textColor">Select the website's text color:</label>
+        <input type="color" id="textColor" value="#FFFFFF">
+        <label for="linkColor">Select the website's link color:</label>
+        <input type="color" id="linkColor" value="#FFC0CB">
+        <button type="submit" id="changeSettings">Change the settings</button>
+    </div>
+
+</body>
+<script>
+    const changeSettings = document.getElementById("changeSettings");
+    const root = document.documentElement;
+    const defaultColors = ["#097C87", "#008000", "#FFFFFF", "#FFC0CB"];
+    changeSettings.addEventListener("click", () => {
+        const primaryColor = document.getElementById("primaryColor");
+        const secondaryColor = document.getElementById("secondaryColor");
+        const textColor = document.getElementById("textColor");
+        const linkColor = document.getElementById("linkColor");
+
+        root.style.setProperty('--primary-color', primaryColor.value);
+        root.style.setProperty('--secondary-color', secondaryColor.value);
+        root.style.setProperty('--text-color', textColor.value);
+        root.style.setProperty('--another-color', linkColor.value);
+    });
+</script>
+</html>
